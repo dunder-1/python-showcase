@@ -1,14 +1,26 @@
 [
     {
         "emp_id": 1,
-        "first_name": "Kater",
-        "last_name": "Karlo",
+        "first_name": "sadas",
+        "last_name": "sadas",
         "hours_per_week": 40
     },
     {
         "emp_id": 2,
-        "first_name": "Katzo",
-        "last_name": "Matzo",
+        "first_name": "bla",
+        "last_name": "blub",
+        "hours_per_week": "30"
+    },
+    {
+        "emp_id": 3,
+        "first_name": "sasaf",
+        "last_name": "fghd",
+        "hours_per_week": 40
+    },
+    {
+        "emp_id": 4,
+        "first_name": "bla",
+        "last_name": "blu",
         "hours_per_week": 30
     }
 ]
