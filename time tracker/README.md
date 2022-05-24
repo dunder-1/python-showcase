@@ -1,2 +1,2 @@
-# Time Tracker
+# ⏲ Time Tracker
 Basic time tracking features
