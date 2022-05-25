@@ -2,7 +2,7 @@ from datetime import datetime
 import streamlit as st
 import features as ft
 
-st.title("Time Tracker")
+st.title("⏲ Time Tracker")
 
 if st.sidebar.button("🚮 Reset Data"):
     ft.write_to(ft.DB["emp"], [])

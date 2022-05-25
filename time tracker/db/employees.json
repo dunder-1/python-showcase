@@ -9,7 +9,7 @@
         "emp_id": 2,
         "first_name": "bla",
         "last_name": "blub",
-        "hours_per_week": "30"
+        "hours_per_week": 30
     },
     {
         "emp_id": 3,
@@ -22,5 +22,11 @@
         "first_name": "bla",
         "last_name": "blu",
         "hours_per_week": 30
+    },
+    {
+        "emp_id": 5,
+        "first_name": "Brox",
+        "last_name": "Mox",
+        "hours_per_week": 40
     }
 ]
