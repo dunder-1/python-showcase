@@ -1,12 +1,17 @@
 import json
-from datetime import datetime
+from datetime import datetime, date
 
 DB = {"emp": "db/employees.json", "time": "db/times.json"}
 DATE_FORMAT = "%Y/%m/%d"
 
-def read_from(db_name:str) -> list[dict]:
+def read_from(db_name:str, format_func=None) -> list[dict]:
+    data = []
     with open(db_name, "r", encoding="utf-8") as file:
-        return json.load(file)
+        for elem in json.load(file):
+            if format_func:
+                elem = format_func(elem)
+            data.append(elem)
+    return data
 
 def write_to(db_name:str, changed_db:list[str]) -> None:
     with open(db_name, "w", encoding="utf-8") as file:
@@ -49,20 +54,27 @@ def get_employee_by_name(first_name:str, last_name:str) -> dict:
 TIME FUNCTIONS
 """
 
-def add_time(emp_id:int, date:tuple, hours:int, description:str, date_format:str=DATE_FORMAT):
-    # date = (YYYY, MM, DD)
-    date = date_format.replace("%Y", str(date[0])).replace("%m", str(date[1])).replace("%d", str(date[2]))
-
+def add_time(emp_id:int, date:date, hours:int, description:str, date_format:str=DATE_FORMAT):
     data = read_from(DB["time"])
     data.append({"emp_id": emp_id,
-                 "date": date,
+                 "date": date.isoformat(),
                  "hours": hours,
                  "description": description})
     write_to(DB["time"], data)
 
+def str_to_date(elem:dict) -> date:
+    elem["date"] = date.fromisoformat(elem["date"])
+    return elem
+
 def get_times_by_emp_id(emp_id:int) -> list[dict]:
-    return [i for i in read_from(DB["time"]) if i["emp_id"] == emp_id]
+    return [i for i in read_from(DB["time"], format_func=str_to_date) if i["emp_id"] == emp_id]
 
 def get_times_by_date(date:tuple) -> list[dict]:
-    return [i for i in read_from(DB["time"]) if i["date"] == date]
+    return [i for i in read_from(DB["time"], format_func=str_to_date) if i["date"] == date]
     
+def get_times_by_week(emp_id:int, week:int, get_sum=False) -> list[dict]:
+    data = []
+    for elem in read_from(DB["time"], format_func=str_to_date):
+        if elem["emp_id"] == emp_id and elem["date"].strftime("%W") == str(week):
+            data.append(elem)
+    return data

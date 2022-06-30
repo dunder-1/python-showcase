@@ -87,3 +87,6 @@ while True:
         clear()
         print("Goodbye...")
         break
+
+
+def main():

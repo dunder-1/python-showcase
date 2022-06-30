@@ -1,20 +1,26 @@
 [
     {
         "emp_id": 1,
-        "date": "2022/5/24",
+        "date": "2022-05-24",
         "hours": 1,
         "description": "asdas"
     },
     {
         "emp_id": 4,
-        "date": "2022/5/24",
+        "date": "2022-05-24",
         "hours": 9,
         "description": "er tat"
     },
     {
         "emp_id": 4,
-        "date": "2022/5/24",
+        "date": "2022-05-24",
         "hours": 3,
         "description": "asdas"
+    },
+    {
+        "emp_id": 1,
+        "date": "2022-05-27",
+        "hours": 1,
+        "description": "sadsas"
     }
 ]

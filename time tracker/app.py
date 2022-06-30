@@ -38,6 +38,11 @@ elif selection == "Show Times of Employee":
                         ft.get_all_employees(),
                         format_func=lambda x: f"{x['first_name']} {x['last_name']} (emp_id = {x['emp_id']})")
     if _emp:
+
+        for week in range(1, 53):
+            _ = ft.get_times_by_week(_emp["emp_id"], week, get_sum=True)
+
+        st.write("---")
         st.table(ft.get_times_by_emp_id(_emp["emp_id"]))
 
 elif selection == "Add new Time":
@@ -48,7 +53,6 @@ elif selection == "Add new Time":
                         ft.get_all_employees(),
                         format_func=lambda x: f"{x['first_name']} {x['last_name']} (emp_id = {x['emp_id']})")
         _date = col2.date_input("Enter Date:")
-        _date = (_date.year, _date.month, _date.day)
         _hours = col3.number_input("How many hours?", min_value=1, max_value=24)
         _description = st.text_area("Describe what you have done:",
                                     max_chars=120)
